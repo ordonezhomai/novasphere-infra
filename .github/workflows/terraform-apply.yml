@@ -41,7 +41,7 @@ jobs:
       - run: terraform plan -input=false -no-color -lock-timeout=300s -out=tfplan
       # On applique le plan sauvegarde, pas un nouveau plan
       - run: terraform apply -input=false -no-color tfplan
-      - run: echo "Application dev : $(terraform output -raw app_url)"
+      - run: echo "Application dev -> $(terraform output -raw app_url)"
 
   apply-prod:
     needs: apply-dev
