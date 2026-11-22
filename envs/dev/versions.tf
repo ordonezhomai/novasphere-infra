@@ -6,19 +6,11 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 6.0"
     }
-    http = {
-      source  = "hashicorp/http"
-      version = "~> 3.4"
-    }
-    local = {
-      source  = "hashicorp/local"
-      version = "~> 2.5"
-    }
   }
 
   backend "s3" {
     bucket       = "novasphere-tfstate-hor"
-    key          = "novasphere/terraform.tfstate"
+    key          = "novasphere/dev/terraform.tfstate"
     region       = "us-east-1"
     encrypt      = true
     use_lockfile = true
@@ -26,13 +18,14 @@ terraform {
 }
 
 provider "aws" {
-  region = var.aws_region
+  region = "us-east-1"
 
   default_tags {
     tags = {
-      Project   = "NovaSphere"
-      ManagedBy = "Terraform"
-      Owner     = var.owner
+      Project     = "NovaSphere"
+      ManagedBy   = "Terraform"
+      Environment = local.environment
+      Owner       = "hor"
     }
   }
 }
