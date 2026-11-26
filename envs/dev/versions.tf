@@ -7,14 +7,6 @@ terraform {
       version = "~> 6.0"
     }
   }
-
-  backend "s3" {
-    bucket       = "novasphere-tfstate-hor"
-    key          = "novasphere/dev/terraform.tfstate"
-    region       = "us-east-1"
-    encrypt      = true
-    use_lockfile = true
-  }
 }
 
 provider "aws" {
@@ -24,8 +16,8 @@ provider "aws" {
     tags = {
       Project     = "NovaSphere"
       ManagedBy   = "Terraform"
-      Environment = local.environment
-      Owner       = "hor"
+      Environment = var.environment
+      Owner       = var.owner
     }
   }
 }

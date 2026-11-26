@@ -1,13 +1,15 @@
-# Terraform
+# Terraform : cache, state, plans, variables (jamais commites)
 .terraform/
 *.tfstate
 *.tfstate.*
 *.tfplan
-terraform.tfvars
+tfplan
+plan.txt
+*.tfvars
 crash.log
 
-# Ansible : inventaire genere et secrets
-ansible/inventory.ini
+# Ansible (hors perimetre, garde par securite)
+ansible/inventory*.ini
 ansible/.vault_pass
 *.retry
 
