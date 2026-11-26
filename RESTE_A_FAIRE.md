@@ -12,7 +12,7 @@
 
 | # | Item | Qui | Quand |
 |---|---|---|---|
-| 1 | Refonte selon le cahier des charges : différences dev/prod par variables, module v1.1.0, extension SSM, documents | Homa Ordonez | 26/11 |
+| 1 | ✅ Refonte selon le cahier des charges : différences dev/prod par variables, module v1.1.0, extension SSM, documents | Homa Ordonez | 26/11 |
 | 2 | Démonstration répétée : PR préparée avec un changement visible, run précédent ouvert dans un onglet | Homa Ordonez | avant la date de gel |
 | 3 | Tag `rendu-final` posé, infrastructure détruite | Homa Ordonez | date de gel : ________ |
 

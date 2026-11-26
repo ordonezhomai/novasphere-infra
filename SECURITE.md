@@ -131,3 +131,13 @@ qui exigent un rôle IAM (interdit dans le lab).
 - **Security Groups chaînés** : les instances ne sont joignables que par l'ALB.
 - **CI** : `permissions:` minimales par workflow, apply du fichier de plan relu, prod derrière une approbation, `concurrency` pour éviter deux déploiements simultanés.
 - **Dépôt** : `.gitignore` excluant state, tfvars, clés, `.env` et cache ; `main` protégée (pull request obligatoire, pas de force-push, règle appliquée aussi au propriétaire).
+
+## 6. Relevé du 26/11 (après mise en conformité)
+
+| Vérification | Résultat |
+|---|---|
+| Plan de la PR #6 | dev et prod : `Plan: 23 to add, 0 to change, 0 to destroy` (même code) |
+| Déploiement par la CI | run « Merge pull request #6 » : apply-dev, approbation, apply-prod, succès en 6 min 9 s |
+| Page servie par l'ALB (dev) | `NovaSphere - dev`, deux serveurs (10.0.1.x et 10.0.2.x), « secret chargé : oui » |
+| Preuve du secret par SSM (`./scripts/admin-ssm.sh dev preuve-secret`) | `/etc/novasphere/app.conf` droits 640, root:root, 33 octets, empreinte `3bced90c` identique sur les deux instances ; valeur jamais affichée |
+| Dérive (`gh workflow run terraform-apply.yml -f action=drift`) | run 45885567933 : drift dev et prod au vert |
